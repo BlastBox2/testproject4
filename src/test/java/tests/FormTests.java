@@ -40,6 +40,9 @@ public class FormTests {
         String phoneNumber = "89277271769";
         String subject = "some subj";
         String curAddress = "Samara 44-21";
+        String state = "Haryana";
+        String city = "Karnal";
+        
 
         $("#firstName").sendKeys(firstName);
         $("#lastName").sendKeys(lastName);
@@ -48,19 +51,18 @@ public class FormTests {
         $("#userNumber").sendKeys(phoneNumber);
         $("#dateOfBirthInput").click();
         $(byXpath("//div[@class='react-datepicker-popper']//div[@class='react-datepicker__week']//div[@class='react-datepicker__day react-datepicker__day--031 react-datepicker__day--outside-month']")).click();
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
 
         $("#subjectsContainer input").sendKeys(subject);
         $(byXpath("//div[@id='hobbiesWrapper']/*[2]/*[2]//label")).click();
         $("#uploadPicture").sendKeys("C:\\Users\\blast\\Pictures\\20210522_091402.jpg");
         $("#currentAddress").sendKeys(curAddress);
-        $(byText("Select State")).click();
+        $("#react-select-3-input").setValue(state).pressEnter();
+        $("#react-select-4-input").setValue(city).pressEnter();
 
         $("#submit").click();
+
+
+
     }
 
 
