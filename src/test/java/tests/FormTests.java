@@ -5,6 +5,9 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
 
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selectors.byXpath;
@@ -45,8 +48,14 @@ public class FormTests {
         $("#userNumber").sendKeys(phoneNumber);
         $("#dateOfBirthInput").click();
         $(byXpath("//div[@class='react-datepicker-popper']//div[@class='react-datepicker__week']//div[@class='react-datepicker__day react-datepicker__day--031 react-datepicker__day--outside-month']")).click();
-        $("#subjectsWrapper").sendKeys(subject);
-        $(byXpath("#hobbiesWrapper/*[2]")).click();
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        $("#subjectsContainer input").sendKeys(subject);
+        $(byXpath("//div[@id='hobbiesWrapper']/*[2]/*[2]//label")).click();
         $("#uploadPicture").sendKeys("C:\\Users\\blast\\Pictures\\20210522_091402.jpg");
         $("#currentAddress").sendKeys(curAddress);
         $(byText("Select State")).click();
