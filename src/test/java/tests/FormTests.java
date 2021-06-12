@@ -62,7 +62,7 @@ public class FormTests {
         $("#submit").click();
 
 
-
+        $x("//contains(., 'Student Name')/parent::/*[2]").shouldHave(firstName);
     }
 
 
